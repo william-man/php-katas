@@ -29,9 +29,32 @@ final class Kata5
 	 *
 	 * BIG HINT:You can use your code from the previous Kata to help you!
 	 */
+
+	private static function sort(array $array): array
+	{
+		if (count($array) <= 1) {
+			return $array;
+		}
+		for ($i = 0; $i < count($array); $i++) {
+			for ($j = 0; $j < count($array) - 1; $j++) {
+				if ($array[$j] > $array[$j+1]) {
+					$holder = (int) $array[$j];
+					$array[$j] = (int) $array[$j+1];
+					$array[$j + 1] = $holder;
+				}
+			}
+		}
+		return $array;
+	}
+
 	public static function median(array $array): int
 	{
 		// TODO: Complete this function!
-		return 0;
+		$sorted = self::sort($array);
+		if (count($sorted) % 2 === 0) {
+			return (int) $sorted[(int) (count($sorted) / 2)-1];
+		} else {
+			return  (int) $sorted[(int) floor((count($sorted) / 2))];
+		}
 	}
 }
