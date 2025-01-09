@@ -7,6 +7,9 @@ declare(strict_types=1);
 
 namespace Katas;
 
+use InvalidArgumentException;
+use Psalm\Issue\InvalidArrayAssignment;
+
 /**
  * Kata2.
  */
@@ -35,9 +38,33 @@ final class Kata2
 	 * either argument is not a positive integer, the method should throw the
 	 * exception InvalidArgumentException.
 	 */
+	// public static function gcd(int $n1, int $n2): int
+	// {
+	// 	// TODO: Complete this function!
+	// 	if($n1 < 0 || $n2 < 0){
+	// 		throw new InvalidArgumentException();
+	// 	}
+	// 	if ($n2 === 0) {
+	// 		return $n1;
+	// 	} else {
+	// 		return self::gcd($n2, $n1 % $n2);
+	// 	}
+	// }
 	public static function gcd(int $n1, int $n2): int
 	{
 		// TODO: Complete this function!
-		return 0;
+		if ($n1 === 0 && $n2 === 0) {
+			return 0;
+		}
+		if ($n1 <= 0 || $n2 <= 0) {
+			throw new InvalidArgumentException();
+		}
+		if ($n1 === $n2) {
+			return $n1;
+		} elseif ($n1 > $n2) {
+			return self::gcd($n1-$n2, $n2);
+		} else {
+			return self::gcd($n1, $n2 - $n1);
+		}
 	}
 }
