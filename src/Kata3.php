@@ -17,12 +17,36 @@ final class Kata3
 	 * separated by a newline, with the following rules:
 	 *
 	 *     1. If the number is divisible by 3 "Fizz" should be printed.
-	 *     2. If the number is divisible by 5 "Buzz" should be printed.
+	 *     2. If the number is divis`ible by 5 "Buzz" should be printed.
 	 *     3. If the number is divisible by 3 and 5 "FizzBuzz" should be printed.
 	 *     4. Otherwise, the number itself should be printed.
 	 */
 	public static function fizzBuzz(): void
 	{
-		echo "";
+		$i = 1;
+		// while ($i <= 100) {
+		// 	if ($i % 3 === 0 && $i % 5 === 0) {
+		// 		echo "FizzBuzz\n";
+		// 	} elseif ($i % 3 === 0) {
+		// 		echo "Fizz\n";
+		// 	} elseif ($i % 5 === 0) {
+		// 		echo "Buzz\n";
+		// 	} else {
+		// 		echo $i . "\n";
+		// 	}
+		// 	$i += 1;
+		// }
+		do {
+			if ($i % 3 === 0 && $i % 5 === 0) {
+				echo "FizzBuzz\n";
+			} elseif ($i % 3 === 0) {
+				echo "Fizz\n";
+			} elseif ($i % 5 === 0) {
+				echo "Buzz\n";
+			} else {
+				echo $i . "\n";
+			}
+			$i += 1;
+		} while ($i <= 100);
 	}
 }
